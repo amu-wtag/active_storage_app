@@ -1,0 +1,22 @@
+<div class="center">
+    <h1>User Profile</h1>
+    <p> Name: <%= @user.name %> </p>
+    <p> Email: <%= @user.email %> </p>
+    <p> Profile Pic: 
+        <% if @user.pic.attached? %>
+            <!-- <img src="<%= url_for(@user.pic) %>" alt="" style="width: 200px; height: 200px;"> -->
+            <%= image_tag @user.pic_resize(100,100) %>
+        <% else %>
+            No profile picture available.
+        <% end %>
+    </p>
+    <p>
+        <p>Videos:</p> 
+        <% if @user.videos.attached? %>
+            <% @user.videos.each do |video| %>
+                <%= video_tag video, controls: true, width: 400 %>
+            <% end %>
+        <% end %>
+
+    </p>
+</div>

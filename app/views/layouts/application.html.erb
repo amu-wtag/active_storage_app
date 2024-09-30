@@ -15,9 +15,29 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+      .center {
+        margin: auto;
+        width: 50%;
+        /* border: 3px solid green; */
+        padding: 10px;
+        line-height: 30px;
+      }
+    </style>
   </head>
 
   <body>
+    <p> <% flash[:notice] if flash[:notice] %> </p>
+    <div class="center">
+      <b> <%= link_to "Home", root_path %> &nbsp; &nbsp; </b>
+      <% if logged_in? %>
+        <b> <%= link_to "User Profile", users_show_path %> &nbsp; &nbsp; </b>
+      <% end %>
+      
+
+    </div>
+
     <%= yield %>
   </body>
 </html>

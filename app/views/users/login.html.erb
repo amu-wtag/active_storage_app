@@ -1,0 +1,19 @@
+<div class="center">
+    <h1>Login</h1>
+    <%= form_with url: users_attempt_login_path, method: :post, local: true do |f| %>
+        <div>
+            <%= f.label :email, "Email" %>
+            <%= f.email_field :email %>
+        </div>
+
+        <div>
+            <%= f.label :password, "Password" %>
+            <%= f.password_field :password %>
+        </div>
+
+        <div>
+            <%= f.submit "Submit", disable_with: 'Submiting...' %>
+        </div>
+
+    <% end %>
+</div>

@@ -1,0 +1,13 @@
+<div class="center">
+    <h1>Home Page</h1>
+
+    <div>
+        <% if logged_in? %>
+            <b>Username: <%= session[:user_name] %></b>
+            <div> <%= link_to "Logout", users_attempt_logout_path %> </div>
+        <% else %>
+            <%= link_to "Signup", users_new_path %> | 
+            <%= link_to "Login", users_login_path %>
+        <% end %>
+    </div>
+</div>
