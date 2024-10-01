@@ -1,18 +1,18 @@
 <div class="center">
     <h1>Login</h1>
-    <%= form_with url: users_attempt_login_path, method: :post, local: true do |f| %>
-        <div>
+    <%= form_with url: users_attempt_login_path, method: :post, local: true, class: "form-horizontal" do |f| %>
+        <div class="mb-3">
             <%= f.label :email, "Email" %>
-            <%= f.email_field :email %>
+            <%= f.email_field :email, class: "form-control" %>
         </div>
 
-        <div>
+        <div class="mb-3">
             <%= f.label :password, "Password" %>
-            <%= f.password_field :password %>
+            <%= f.password_field :password, class: "form-control" %>
         </div>
 
-        <div>
-            <%= f.submit "Submit", disable_with: 'Submiting...' %>
+        <div class="mb-3">
+            <%= f.submit "Login", disable_with: 'Submiting...', class: "btn btn-primary" %>
         </div>
 
     <% end %>

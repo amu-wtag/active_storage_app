@@ -58,3 +58,6 @@ end
 
 gem "activestorage"
 gem "rufus-scheduler"
+gem "bootstrap", "~> 5.0"
+gem "cssbundling-rails"
+gem "sassc-rails"

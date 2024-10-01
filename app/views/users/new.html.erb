@@ -1,35 +1,39 @@
 <div class="center">
     <h1>Signup</h1>
     <div>
-        <%= form_with model: @user, url: users_create_path, method: :post, local: true do |f| %>
-            <div>
+        <%= form_with model: @user, url: users_create_path, method: :post, 
+            local: true, class: "form-horizontal" do |f| %>
+            <div class="mb-3">
                 <%= f.label :name, "Name" %>
-                <%= f.text_field :name %>
+                <%= f.text_field :name, class: "form-control" %>
             </div>
-            <div>
+            <div class="mb-3">
                 <%= f.label :email, "Email" %>
-                <%= f.email_field :email %>
+                <%= f.email_field :email, class: "form-control" %>
             </div>
-            <div>
+            <div class="mb-3">
                 <%= f.label :password, "Password" %>
-                <%= f.password_field :password %>
+                <%= f.password_field :password, class: "form-control" %>
             </div>
 
-            <div>
+            <div class="mb-3">
                 <%= f.label :pic, "Profile Picture" %>
-                <%= f.file_field :pic, accept: "image/*"%>
+                <%= f.file_field :pic, accept: "image/*", class: "form-control" %>
             </div>
 
-            <div>
+            <div class="mb-3">
                 <%= f.label :document, "CV" %>
-                <%= f.file_field :document, accept: ".pdf,.doc,.docx" %>
+                <%= f.file_field :document, accept: ".pdf,.doc,.docx", class: "form-control" %>
             </div>
-            <div>
+            <div class="mb-3">
                 <%= f.label :videos, "Videos" %>
-                <%= f.file_field :videos, multiple: true, accept: "video/*" %>
+                <%= f.file_field :videos, multiple: true, accept: "video/*", class: "form-control" %>
             </div>
-            <div>
-                <%= f.submit "Submit", disable_with: 'Submiting...' %>
+            <div class="mb-3">
+                <div class="d-grid gap-2">
+                    <%= f.submit "Submit", disable_with: 'Submiting...', class: "btn btn-outline-success" %>
+                </div>
+                
             </div>
         <% end %>
         
