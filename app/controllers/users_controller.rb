@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.last_login = Time.now
     if @user.save
       session[:user_id] = @user.id
       session[:user_name] = @user.name
@@ -39,6 +40,8 @@ class UsersController < ApplicationController
   def attempt_login
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
+      @user.last_login = Time.now + 6.hours
+      @user.save
       session[:user_id] = @user.id
       session[:user_name] = @user.name
       redirect_to users_show_path, notice: "Logged in successfully!"
@@ -56,6 +59,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :pic, :document, videos: [])
+    params.require(:user).permit(:name, :email, :password, :pic, :document, :last_login, videos: [])
   end
 end

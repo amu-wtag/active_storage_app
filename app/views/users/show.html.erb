@@ -19,7 +19,6 @@
                 <% else %>
                     <%= link_to "Download CV", url_for(@user.document), target: "_blank" %>
                 <% end %>
-                
             <% end %>
             
         </p>
@@ -33,5 +32,9 @@
         <% else %>
             <p>No videos uploaded.</p>
         <% end %>
+    </p>
+
+    <p>
+        Last login: <%= @user.last_login %>
     </p>
 </div>
