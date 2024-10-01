@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one_attached :pic
+  has_one_attached :document
   has_many_attached :videos
   has_secure_password
 

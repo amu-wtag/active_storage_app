@@ -1,8 +1,6 @@
 <div class="center">
     <h1>User Profile</h1>
-    <p> Name: <%= @user.name %> </p>
-    <p> Email: <%= @user.email %> </p>
-    <p> Profile Pic: 
+    <p>
         <% if @user.pic.attached? %>
             <!-- <img src="<%= url_for(@user.pic) %>" alt="" style="width: 200px; height: 200px;"> -->
             <%= image_tag @user.pic_resize(100,100) %>
@@ -10,13 +8,30 @@
             No profile picture available.
         <% end %>
     </p>
+    <p> Name: <%= @user.name %> </p>
+    <p> Email: <%= @user.email %> </p>
+    <p>
+        <p>
+            CV:
+            <% if @user.document.attached? %>
+                <% if @user.document.content_type == "application/pdf" %>
+                    <embed src="<%= url_for(@user.document)%>" type="" width="400" height="400">
+                <% else %>
+                    <%= link_to "Download CV", url_for(@user.document), target: "_blank" %>
+                <% end %>
+                
+            <% end %>
+            
+        </p>
+    </p>
     <p>
         <p>Videos:</p> 
         <% if @user.videos.attached? %>
             <% @user.videos.each do |video| %>
                 <%= video_tag video, controls: true, width: 400 %>
             <% end %>
+        <% else %>
+            <p>No videos uploaded.</p>
         <% end %>
-
     </p>
 </div>

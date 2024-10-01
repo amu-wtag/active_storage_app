@@ -19,6 +19,11 @@
                 <%= f.label :pic, "Profile Picture" %>
                 <%= f.file_field :pic, accept: "image/*"%>
             </div>
+
+            <div>
+                <%= f.label :document, "CV" %>
+                <%= f.file_field :document, accept: ".pdf,.doc,.docx" %>
+            </div>
             <div>
                 <%= f.label :videos, "Videos" %>
                 <%= f.file_field :videos, multiple: true, accept: "video/*" %>
