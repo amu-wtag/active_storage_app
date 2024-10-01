@@ -25,15 +25,16 @@
                 <%= f.label :document, "CV" %>
                 <%= f.file_field :document, accept: ".pdf,.doc,.docx", class: "form-control" %>
             </div>
+            
             <div class="mb-3">
                 <%= f.label :videos, "Videos" %>
                 <%= f.file_field :videos, multiple: true, accept: "video/*", class: "form-control" %>
             </div>
+
             <div class="mb-3">
                 <div class="d-grid gap-2">
                     <%= f.submit "Submit", disable_with: 'Submiting...', class: "btn btn-outline-success" %>
                 </div>
-                
             </div>
         <% end %>
         
