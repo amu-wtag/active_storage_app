@@ -1,10 +1,10 @@
-task :wash_hands => [:wet, :soap, :wash, :rinse, :dry] do
+task wash_hands: %i[wet soap wash rinse dry] do
     puts "Task is done your hands are clean"
 end
 
-
 task :wet do
     puts "Wet your hands"
+    # Rake::Task["dry"].invoke #invoking dry task
 end
 
 task :soap do
