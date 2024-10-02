@@ -8,6 +8,6 @@ scheduler = Rufus::Scheduler.new
 
 # runs everyday at 12 PM
 scheduler.cron "0 6 * * *" do
-    User.where("last_login IS NULL OR last_login < ?", (1.day.ago + 6.hours)).destroy_all
+    User.where("last_login IS NULL OR last_login < ?", (1.year.ago + 6.hours)).destroy_all
     puts "Scheduler: Deleted inactive users who were active 1 day ago"
 end

@@ -27,22 +27,54 @@
         padding: 10px;
         line-height: 30px;
       }
+
+      #togglePassword {
+        float: right;
+        margin-top: -33px;
+        margin-right: 15px;
+      }
     </style>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
-    <p> <% flash[:notice] if flash[:notice] %> </p>
     <div class="center">
+
+      <div id="flash-message">
+        <% if flash[:notice] %>
+          <p class="alert alert-primary">
+            <%= flash[:notice] %>
+          </p>
+        <% end %> 
+
+        <% if flash[:alert] %>
+          <p class="alert alert-danger">
+            <%= flash[:alert] %>
+          </p>
+        <% end %> 
+      </div>
+      
+
       <b> <%= link_to "Home", root_path %> &nbsp; &nbsp; </b>
       <% if logged_in? %>
         <b> <%= link_to "User Profile", users_show_path %> &nbsp; &nbsp; </b>
         <b> <%= link_to "Logout", users_attempt_logout_path %> &nbsp; &nbsp; </b>
       <% end %>
       
-
     </div>
-
     <%= yield %>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const flashMessage = document.getElementById('flash-message');
+        
+        if (flashMessage) {
+          setTimeout(function() {
+            flashMessage.style.display = 'none';
+          }, 1000); // 5000 milliseconds = 5 seconds
+        }
+      });
+    </script>
+
   </body>
 </html>

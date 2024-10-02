@@ -1,4 +1,4 @@
-<div class="center">
+<div class="center content">
     <h1>User Profile</h1>
     <p>
         <% if @user.pic.attached? %>
@@ -8,7 +8,7 @@
             No profile picture available.
         <% end %>
     </p>
-    <p> Name: <%= @user.name %> </p>
+    <p> Name: <%= @user.name %> </p> 
     <p> Email: <%= @user.email %> </p>
     <p>
         <p>

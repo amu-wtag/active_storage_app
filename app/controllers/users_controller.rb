@@ -40,14 +40,20 @@ class UsersController < ApplicationController
   def attempt_login
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
-      @user.last_login = Time.now + 6.hours
-      @user.save
+      @user.update(last_login: Time.now + 6.hours)
       session[:user_id] = @user.id
       session[:user_name] = @user.name
       redirect_to users_show_path, notice: "Logged in successfully!"
     else
-      flash.now[:notice] = "Invalid email or password"
-      render :login
+      flash.now[:alert] = "Invalid email or password!"
+      # Rails.logger.debug "\nFlash alert: #{flash.now[:alert]}\n" # Debug the flash message
+
+      # In Rails 7 turbo expects POST / PUT / PATCH form submissions to redirect, 
+      # usually that's create and update controller actions.
+      # To render a template, the response has to have an invalid status, like :unprocessable_entity, 
+      # otherwise turbo shows an error in the browser console:
+      # render :login
+      render :login, status: :unprocessable_entity
     end
   end
   def attempt_logout
